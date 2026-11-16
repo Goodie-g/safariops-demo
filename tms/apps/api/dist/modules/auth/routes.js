@@ -61,7 +61,7 @@ authRouter.get('/me', requireAuth, asyncHandler(async (req, res) => {
     const user = req.authUser;
     res.json({
         data: {
-            user: { id: user.id, email: user.email, fullName: user.fullName, role: user.role },
+            user: { id: user.id, email: user.email, fullName: user.fullName, role: user.role, lastLoginAt: user.lastLoginAt },
         },
     });
 }));

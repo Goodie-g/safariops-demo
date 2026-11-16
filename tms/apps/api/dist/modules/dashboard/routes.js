@@ -6,7 +6,7 @@ import { getSettings } from '../../services/settings.js';
 import { expireQuotations } from '../quotations/service.js';
 export const dashboardRouter = Router();
 dashboardRouter.use(requireAuth);
-dashboardRouter.get('/', asyncHandler(async (_req, res) => {
+dashboardRouter.get('/', asyncHandler(async (req, res) => {
     await expireQuotations();
     const db = getDb();
     const settings = await getSettings();
@@ -74,8 +74,7 @@ dashboardRouter.get('/', asyncHandler(async (_req, res) => {
            LEFT JOIN products p ON p.id = b.product_id
           WHERE b.status IN ('confirmed','in_progress') AND b.travel_date_end >= current_date
           ORDER BY b.travel_date_start LIMIT 6`),
-        db.query(`SELECT id, actor_email, action, entity_type, entity_id, changes, created_at
-           FROM audit_logs ORDER BY created_at DESC LIMIT 10`),
+        db.query(`SELECT id, actor_email, action, entity_type, entity_id, changes, created_at FROM audit_logs WHERE actor_id = $1 ORDER BY created_at DESC LIMIT 10`, [req.authUser.id]),
     ]);
     const total = enquiryStats.rows[0]?.total ?? 0;
     const converted = enquiryStatus.rows.find((row) => row.status === 'converted')?.count ?? 0;

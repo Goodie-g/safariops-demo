@@ -13,7 +13,7 @@ export function readSessionToken(req) {
 }
 export async function resolveSession(token) {
     const db = getDb();
-    const result = await db.query(`SELECT s.id AS session_id, u.id, u.email, u.full_name, u.role
+    const result = await db.query(`SELECT s.id AS session_id, u.id, u.email, u.full_name, u.role, u.last_login_at
        FROM sessions s
        JOIN admin_users u ON u.id = s.user_id
       WHERE s.token_hash = $1
@@ -29,6 +29,7 @@ export async function resolveSession(token) {
         fullName: row.full_name,
         role: row.role,
         sessionId: row.session_id,
+        lastLoginAt: row.last_login_at,
     };
 }
 export async function requireAuth(req, res, next) {
