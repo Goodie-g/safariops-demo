@@ -8,7 +8,7 @@ The demo runs the existing compiled build (the TypeScript source is not present 
 
 | Item | Value |
 | --- | --- |
-| Demo URL | <https://safariops-demo.onrender.com> |
+| Demo URL | <https://safariops-demo-e3la.onrender.com> |
 | Repository | <https://github.com/Goodie-g/safariops-demo> |
 | Render Blueprint | `safariops-demo` (`render.yaml`) |
 | Deploy trigger | Push to `main` |
@@ -25,7 +25,7 @@ The repository is public so Render can build it without a GitHub App installatio
 
 | Field | Value |
 | --- | --- |
-| URL | The Render service URL (for example `https://safariops-demo.onrender.com`) |
+| URL | The Render service URL (for example `https://safariops-demo-e3la.onrender.com`) |
 | Email | `owner@safariops-demo.onrender.com` |
 | Password | `SafariOps#Demo2026` |
 
