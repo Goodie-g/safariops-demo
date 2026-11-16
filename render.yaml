@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: erniza-tms-demo
+    name: safariops-demo
     runtime: docker
     plan: free
     region: frankfurt
