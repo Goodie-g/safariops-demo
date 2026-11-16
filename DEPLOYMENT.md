@@ -1,6 +1,6 @@
-# Erniza TMS — Docker demo deployment
+# SafariOps Demo - Docker demo deployment
 
-This folder contains everything needed to run the **Erniza Africa Safaris Tourism Management System** as a public demo on [Render](https://render.com) using Docker.
+This folder contains everything needed to run the **SafariOps Demo** as a public demo on [Render](https://render.com) using Docker.
 
 The demo runs the existing compiled build (the TypeScript source is not present in this workspace) and ships with a pre-seeded PGlite database and uploaded safari images baked into the image.
 
@@ -8,9 +8,9 @@ The demo runs the existing compiled build (the TypeScript source is not present 
 
 | Item | Value |
 | --- | --- |
-| Demo URL | <https://erniza-tms-demo.onrender.com> |
-| Repository | <https://github.com/Goodie-g/erniza-tms-demo> |
-| Render Blueprint | `erniza-tms-demo` (`render.yaml`) |
+| Demo URL | <https://safariops-demo.onrender.com> |
+| Repository | <https://github.com/Goodie-g/safariops-demo> |
+| Render Blueprint | `safariops-demo` (`render.yaml`) |
 | Deploy trigger | Push to `main` |
 
 The repository is public so Render can build it without a GitHub App installation. It contains only the compiled demo, seeded sample data (`example.com` addresses and `555` phone numbers), and the public marketing site. No `.env` file or API keys are committed.
@@ -25,15 +25,15 @@ The repository is public so Render can build it without a GitHub App installatio
 
 | Field | Value |
 | --- | --- |
-| URL | The Render service URL (for example `https://erniza-tms-demo.onrender.com`) |
-| Email | `owner@ernizaafricasafaris.com` |
-| Password | `Erniza#Dev2026` |
+| URL | The Render service URL (for example `https://safariops-demo.onrender.com`) |
+| Email | `owner@safariops-demo.onrender.com` |
+| Password | `SafariOps#Demo2026` |
 
 These credentials are also shown on the sign-in page, with a button that fills the form.
 
 A second seeded account exists with the same password:
 
-- `manager@ernizaafricasafaris.com`
+- `manager@safariops-demo.onrender.com`
 
 > This is a public shared demo login. Do not put real customer, payment or staff data into it.
 
@@ -46,7 +46,7 @@ Render deploys from GitHub/GitLab/Bitbucket. From the project root:
 ```bash
 git init
 git add .
-git commit -m "Erniza TMS Docker demo"
+git commit -m "SafariOps Demo Docker demo"
 git branch -M main
 git remote add origin <your-repository-url>
 git push -u origin main
@@ -64,7 +64,7 @@ The Blueprint for this repository is already created and deploys on every push t
 
 The Blueprint creates one free Docker web service:
 
-- Name: `erniza-tms-demo`
+- Name: `safariops-demo`
 - Region: `frankfurt`
 - Dockerfile: `tms/Dockerfile`
 - Build context: `tms`
@@ -157,7 +157,7 @@ Git does not preserve empty directories and wildcard ignore rules can drop requi
 If either safeguard is removed, the container will fail to start with `RuntimeError: Aborted()` and the real cause will appear in the logs only when `PGLITE_DEBUG=1` or `PREFLIGHT=1`.
 
 **Login fails.**
-Use `owner@ernizaafricasafaris.com` / `Erniza#Dev2026`. Both seeded accounts share this password. If the password was changed through the demo, restart the service to restore the baked data.
+Use `owner@safariops-demo.onrender.com` / `SafariOps#Demo2026`. Both seeded accounts share this password. If the password was changed through the demo, restart the service to restore the baked data.
 
 **The demo is slow after a period of inactivity.**
 This is Render's free-tier spin-down. The next request wakes the service.
